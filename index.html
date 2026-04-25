@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Guia Prático: Redução Tributária na Construção Civil | Silvanio Gois</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a2f44;
+            --primary: #1b4f6e;
+            --primary-light: #2c7a99;
+            --accent: #e67e22;
+            --accent-light: #f39c12;
+            --gray-bg: #f4f7fc;
+            --card-border: #e2e8f0;
+            --text-dark: #1e293b;
+            --text-muted: #475569;
+            --success: #2e7d32;
+            --warning: #ed6c02;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --transition: all 0.2s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--gray-bg);
+            color: var(--text-dark);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 1.2rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .header-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .title h1 {
+            font-size: 1.3rem;
+            letter-spacing: -0.3px;
+        }
+        .title p {
+            font-size: 0.8rem;
+            opacity: 0.85;
+        }
+
+        .btn-wa {
+            background: #25D366;
+            padding: 0.6rem 1.3rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .btn-wa:hover {
+            transform: scale(1.02);
+            background: #1da15a;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 1.8rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .checklist-section, .calc-box, .tabs-wrapper, .incentives-section, .retencao-section, .oportunidades-section, .case-study, .errors-section, .eficiencia-section, .checklist-final {
+            transition: var(--transition);
+        }
+        .checklist-section:hover, .calc-box:hover, .tabs-wrapper:hover, .incentives-section:hover, .retencao-section:hover, .oportunidades-section:hover, .case-study:hover, .errors-section:hover, .eficiencia-section:hover, .checklist-final:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .checklist-section, .incentives-section, .retencao-section, .oportunidades-section, .eficiencia-section, .checklist-final {
+            background: var(--white);
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border-left: 6px solid var(--accent);
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            align-items: flex-start;
+            transition: var(--transition);
+            padding: 0.3rem;
+            border-radius: 12px;
+        }
+        .step:hover {
+            background: #f8fafc;
+            transform: translateX(4px);
+        }
+        .step-num {
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .calc-box {
+            background: linear-gradient(145deg, #eef2ff, #e4e9f5);
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .input-field {
+            flex: 1;
+            min-width: 160px;
+        }
+        .input-field label {
+            font-weight: 600;
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 0.6rem;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            transition: var(--transition);
+        }
+        .input-field input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(230,126,34,0.2);
+        }
+        .result {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .tabs-wrapper {
+            background: var(--white);
+            border-radius: 1.2rem;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .tabs-header {
+            display: flex;
+            flex-wrap: wrap;
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .tab-btn:hover {
+            background: rgba(27,79,110,0.05);
+            color: var(--primary);
+        }
+        .tab-btn.active {
+            background: var(--white);
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+        }
+        .tab-content {
+            display: none;
+            padding: 1.8rem;
+            animation: fade 0.2s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(5px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            border-left: 5px solid var(--accent);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        h3 {
+            color: var(--primary);
+            margin: 1rem 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        .card-dica {
+            background: #fefaf5;
+            border: 1px solid #ffe0b5;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            transition: var(--transition);
+        }
+        .card-dica:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        .expand-btn {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.8rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .expand-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .expand-detail {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .expand-detail.show {
+            display: block;
+            animation: fade 0.2s ease;
+        }
+        .formula {
+            background: #eef2ff;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 0.5rem 0;
+        }
+        .alert-box {
+            background: #fff2e8;
+            border-left: 4px solid var(--warning);
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+        }
+        .success-box {
+            background: #e0f2e9;
+            border-left: 4px solid var(--success);
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.6rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: var(--primary);
+            color: white;
+        }
+        .case-study, .errors-section {
+            background: var(--white);
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 1.5rem;
+            background: var(--primary);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border: none;
+            cursor: pointer;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--primary-dark);
+            color: #ccc;
+            text-align: center;
+            padding: 1.8rem;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+        }
+        footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            .tabs-header { flex-direction: column; }
+            .tab-btn { text-align: left; }
+            .step { flex-direction: column; }
+            .back-to-top { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="brand">
+        <img src="Gestão_SG.png" alt="Silvanio Gois - Gestão" class="header-image" onerror="this.onerror=null; this.style.display='none';">
+        <div class="title">
+            <h1>Silvanio Gois</h1>
+            <p>Estratégia em Redução Tributária | Construção Civil</p>
+        </div>
+    </div>
+    <div>
+        <a href="https://wa.me/5513988301094" target="_blank" class="btn-wa">Contato</a>
+    </div>
+</header>
+
+<div class="container">
+    <!-- CHECKLIST INICIAL -->
+    <div class="checklist-section">
+        <h2>Roteiro prático: como reduzir impostos HOJE</h2>
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Diagnóstico rápido</strong> – Anote faturamento, folha total e % de materiais nas notas.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Verifique o regime atual</strong> – No Simples, calcule Fator R; no Presumido/Real, avalie CPRB com atenção à reoneração gradual em 2026.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Separe materiais na nota</strong> – Use Súmula 31 STF, mas exija notas fiscais de remessa (CFOP 5.949/6.949) para comprovar o fornecimento.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Incorporadoras: SPE + RET</strong> – 4% sobre receita (1% para habitação social). Planeje a venda de unidades após a baixa da afetação.</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Créditos e retenções</strong> – Lucro Real: crédito sobre resíduos, locação sem operador (não ISS), depreciação acelerada. Simples: controle retenção de 11%.</div></div>
+        <div class="step"><div class="step-num">📋</div><div class="step-text"><strong>Checklist extra de compliance:</strong> Possuo laudo de periculosidade/insalubridade atualizado? O tomador é órgão público (retenções diferentes)? Utilizamos crédito de depreciação acelerada em máquinas novas?</div></div>
+    </div>
+
+    <!-- CALCULADORA CPRB + REFINAMENTO COM ALERTA DINÂMICO -->
+    <div class="calc-box">
+        <h3 style="margin-top:0;">📊 Calculadora: Desonerar ou não a folha? (CPRB)</h3>
+        <div class="input-group">
+            <div class="input-field"><label>Faturamento mensal médio (R$)</label><input type="number" id="receita" placeholder="Ex: 350000" value="350000"></div>
+            <div class="input-field"><label>Folha bruta mensal (R$)</label><input type="number" id="folha" placeholder="Ex: 80000" value="80000"></div>
+        </div>
+        <div class="result" id="resultadoCprb"></div>
+        <p style="font-size:0.7rem; margin-top:0.5rem;">*Compara alíquota patronal vigente (2025: 20%) vs 4,5% sobre faturamento líquido. Para 2026, a alíquota sobre folha poderá ser 8% ou 12% (transição).</p>
+        <button class="expand-btn" data-target="calcCprbDetail">🔍 Refinamentos e reoneração 2026</button>
+        <div id="calcCprbDetail" class="expand-detail">
+            <strong>📐 Base de cálculo da CPRB:</strong> A receita bruta pode ser reduzida de vendas canceladas, descontos incondicionais, ICMS e ISS destacados.<br>
+            <strong>⚠️ Reoneração gradual (2026):</strong> O STF determinou o fim da desoneração total. Para 2026, a alíquota patronal sobre a folha pode ser 8% ou 12% (transição). Assim, o ponto de equilíbrio deixa de ser 22,5%: <br>
+            • Se alíquota sobre folha for 8% → equilíbrio quando Folha/Receita = 4,5%/8% = 56,25%.<br>
+            • Se alíquota for 12% → equilíbrio = 4,5%/12% = 37,5%.<br>
+            <strong>Dinâmica na calculadora:</strong> O resultado acima considera a alíquota cheia de 20% (2025). Para 2026, refaça o cálculo manualmente com a alíquota patronal que for publicada.
+        </div>
+    </div>
+
+    <!-- TABELA COMPARATIVA DE EFICIÊNCIA POR REGIME (NOVO) -->
+    <div class="eficiencia-section">
+        <h2>📊 Matriz de eficiência tributária por regime</h2>
+        <p>Comparação direta dos principais fatores de custo e oportunidade em cada regime.</p>
+        <table>
+            <thead>
+                <tr><th>Fator de Custo / Benefício</th><th>Simples Nacional</th><th>Lucro Presumido</th><th>Lucro Real</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>ISS</td><td>Dedução via Súmula 31 (nota discriminada)</td><td>Dedução via Súmula 31</td><td>Dedução via Súmula 31 + crédito de PIS/COFINS sobre materiais?</td></tr>
+                <tr><td>Folha (INSS Patronal)</td><td>INSS já incluso no DAS (não cabe CPRB). Fator R pode reduzir alíquota.</td><td>Pode optar pela CPRB (4,5% sobre rec.)</td><td>Pode optar pela CPRB (4,5% sobre rec.)</td></tr>
+                <tr><td>Materiais (insumos)</td><td>Custo líquido (sem crédito)</td><td>Custo líquido</td><td>Crédito de 9,25% (PIS/COFINS não cumulativo)</td></tr>
+                <tr><td>Máquinas e equipamentos</td><td>Aluguel como custo operacional</td><td>Aluguel como custo operacional</td><td>Depreciação acelerada + crédito sobre aluguel sem operador</td></tr>
+                <tr><td>Resíduos da construção</td><td>Custo líquido</td><td>Custo líquido</td><td>Crédito de PIS/COFINS sobre transporte e destinação</td></tr>
+                <tr><td>Habitação Social (RET)</td><td>Não se aplica</td><td>Não se aplica diretamente</td><td>Alíquota de 1% sobre receita (via SPE + patrimônio de afetação)</td></tr>
+            </tbody>
+        </table>
+        <div class="alert-box">💡 Para empresas no Lucro Real, a combinação de CPRB + créditos sobre insumos + depreciação acelerada geralmente supera os outros regimes, desde que haja volume de custos tributáveis.</div>
+    </div>
+
+    <!-- SEÇÃO INSUMOS E CRÉDITOS (mantida) -->
+    <div class="incentives-section">
+        <h2>📦 Planejamento de insumos e créditos (Lucro Real)</h2>
+        <div class="grid-2">
+            <div class="card-dica"><h3>♻️ Resíduos da construção</h3><button class="expand-btn" data-target="residuoDetail">Crédito sobre insumo essencial</button><div id="residuoDetail" class="expand-detail">STJ entende que custo com remoção de resíduos é insumo → crédito de 9,25% (PIS+COFINS). Guarde notas fiscais de transporte e destinação.</div></div>
+            <div class="card-dica"><h3>🏗️ Locação sem operador</h3><button class="expand-btn" data-target="locacaoDetail">Redução de ISS</button><div id="locacaoDetail" class="expand-detail">Locação de bens móveis sem operador não é serviço → não incide ISS (Súmula 68 STJ). Economia típica de 2% a 5% sobre o valor da locação.</div></div>
+            <div class="card-dica"><h3>⚡ Depreciação acelerada</h3><button class="expand-btn" data-target="depreciacaoDetail">Como aplicar</button><div id="depreciacaoDetail" class="expand-detail">Lei 11.774/2008 permite depreciação integral de máquinas novas no primeiro ano. Ex: Máquina R$500k → redução de lucro real → economia de até R$170k no primeiro ano.</div></div>
+        </div>
+    </div>
+
+    <!-- RET: HABITAÇÃO SOCIAL + VENDA DE ESTOQUE -->
+    <div class="retencao-section">
+        <h2>🏢 RET – Detalhamento para incorporadoras</h2>
+        <div class="grid-2">
+            <div class="card-dica"><h3>🏘️ Habitação de Interesse Social (1%)</h3><button class="expand-btn" data-target="retSocialDetail">Condições</button><div id="retSocialDetail" class="expand-detail">Para empreendimentos do PMCMV (faixas 1, 2 e 3), a alíquota do RET pode ser reduzida para 1% (Lei 12.024/2009). Necessário enquadramento na política habitacional e limites de valor de venda.</div></div>
+            <div class="card-dica"><h3>📦 Venda de estoque após afetação</h3><button class="expand-btn" data-target="retVendaDetail">Planejamento</button><div id="retVendaDetail" class="expand-detail">O RET só se aplica enquanto o patrimônio de afetação estiver ativo. Após a baixa (entrega das chaves), as unidades remanescentes voltam ao regime normal da SPE (Lucro Presumido, geralmente). Planeje o cronograma de vendas.</div></div>
+        </div>
+    </div>
+
+    <!-- COMPLIANCE SÚMULA 31 (CFOP) -->
+    <div class="oportunidades-section">
+        <h2>📑 Súmula 31 STF – Como não ter a dedução glosada</h2>
+        <div class="grid-2">
+            <div class="card-dica"><h3>🧾 Nota fiscal de remessa (CFOP 5.949/6.949)</h3><button class="expand-btn" data-target="cfopDetail">Proteção contra autuação</button><div id="cfopDetail" class="expand-detail">Para comprovar o fornecimento de materiais (exclusão da base do ISS), emita notas fiscais de remessa para a obra com CFOP 5.949 (entrada) ou 6.949 (saída) e vincule ao contrato. Sem o lastro, o fisco pode glosar a dedução.</div></div>
+            <div class="card-dica"><h3>📌 Controle de estoque e rastreabilidade</h3><button class="expand-btn" data-target="rastreabilidadeDetail">Prática recomendada</button><div id="rastreabilidadeDetail" class="expand-detail">Utilize sistema que cruze notas de compra → notas de remessa para a obra → medição de serviços. Reduz riscos de autuação e ainda gera créditos de PIS/COFINS para Lucro Real.</div></div>
+        </div>
+    </div>
+
+    <!-- IPTU VERDE + ISS TECNOLÓGICO -->
+    <div class="oportunidades-section">
+        <h2>🌱 Fiscalidade verde e incentivos locais</h2>
+        <div class="grid-2">
+            <div class="card-dica"><h3>🏡 IPTU Verde</h3><button class="expand-btn" data-target="iptuVerdeDetail">Desconto para sustentabilidade</button><div id="iptuVerdeDetail" class="expand-detail">Prefeituras concedem desconto de até 10% no IPTU para projetos com reuso de água, energia solar, telhado verde. Reduz custo de carregamento de terrenos e imóveis não vendidos.</div></div>
+            <div class="card-dica"><h3>💻 ISS Tecnológico / Inovação</h3><button class="expand-btn" data-target="issTecDetail">Alíquota reduzida</button><div id="issTecDetail" class="expand-detail">Algumas cidades reduzem ISS de 5% para 2% ou 3% para empresas que investem em inovação ou estão em polos tecnológicos. Verifique programas municipais.</div></div>
+        </div>
+    </div>
+
+    <!-- ABAS TÉCNICAS (resumo prático) -->
+    <div class="tabs-wrapper">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="tab-simples">Simples Nacional</button>
+            <button class="tab-btn" data-tab="tab-presumido">Lucro Presumido</button>
+            <button class="tab-btn" data-tab="tab-real">Lucro Real / RET</button>
+            <button class="tab-btn" data-tab="tab-cprb">CPRB</button>
+        </div>
+        <div id="tab-simples" class="tab-content active">
+            <h2>Simples Nacional – Ações práticas</h2>
+            <div class="grid-2">
+                <div class="card-dica"><h3>📌 Fator R</h3><button class="expand-btn" data-target="fatorRDetail">Ver cálculo</button><div id="fatorRDetail" class="expand-detail">Folha+pró-labore 12m / Receita 12m ≥ 28% → Anexo III (alíquota reduzida). Aumente pró-labore legalmente.</div></div>
+                <div class="card-dica"><h3>💰 Retenção de 11%</h3><button class="expand-btn" data-target="retencao11Detail">Compensação</button><div id="retencao11Detail" class="expand-detail">Valor retido abatido na DAS. Ex: Nota R$100k → retenção R$11k; DAS R$8k → não paga e fica crédito.</div></div>
+                <div class="card-dica"><h3>🧱 Separação de materiais</h3><button class="expand-btn" data-target="issMateriaisDetail">Súmula 31</button><div id="issMateriaisDetail" class="expand-detail">Emita nota discriminando materiais. Ex: R$500k contrato, R$200k materiais → ISS sobre R$300k → economia de R$10mil (ISS 5%).</div></div>
+            </div>
+        </div>
+        <div id="tab-presumido" class="tab-content">
+            <h2>Lucro Presumido – Como pagar menos</h2>
+            <div class="grid-2">
+                <div class="card-dica"><h3>🏷️ Exclusão de materiais do ISS</h3><button class="expand-btn" data-target="presumidoIssDetail">Detalhe</button><div id="presumidoIssDetail" class="expand-detail">Separe serviço e materiais na nota. Economia imediata de ISS.</div></div>
+                <div class="card-dica"><h3>📉 Presunção para venda de imóveis</h3><button class="expand-btn" data-target="presuncaoDetail">Cálculo</button><div id="presuncaoDetail" class="expand-detail">Presunção 8% IRPJ, 12% CSLL. Ex: receita R$1M → base IRPJ R$80k (imposto R$12k), CSLL R$120k (imposto R$10,8k).</div></div>
+                <div class="card-dica"><h3>🔄 CPRB opcional</h3><button class="expand-btn" data-target="presumidoCprbDetail">Como optar</button><div id="presumidoCprbDetail" class="expand-detail">Compare 20% da folha com 4,5% da receita (ajuste para 2026). Em janeiro, GPS código 1079.</div></div>
+            </div>
+        </div>
+        <div id="tab-real" class="tab-content">
+            <h2>Lucro Real / RET – Estratégias avançadas</h2>
+            <div class="grid-2">
+                <div class="card-dica"><h3>✨ Créditos PIS/COFINS (9,25%)</h3><button class="expand-btn" data-target="creditosDetail">Lista</button><div id="creditosDetail" class="expand-detail">Créditos sobre insumos, resíduos, aluguel sem operador, depreciação. Ex: R$200k insumos → crédito R$18.500.</div></div>
+                <div class="card-dica"><h3>🏆 RET Social (1%)</h3><button class="expand-btn" data-target="retSocialDetail2">Detalhe</button><div id="retSocialDetail2" class="expand-detail">Para empreendimentos do PMCMV, alíquota reduzida para 1% sobre receita. Requer enquadramento.</div></div>
+                <div class="card-dica"><h3>📉 Compensação prejuízo fiscal</h3><button class="expand-btn" data-target="prejuizoDetail">Mecanismo</button><div id="prejuizoDetail" class="expand-detail">Prejuízo da fase inicial abate até 30% do lucro real futuro. Ex: prejuízo R$800k, lucro R$1M → compensa R$300k.</div></div>
+            </div>
+        </div>
+        <div id="tab-cprb" class="tab-content">
+            <h2>CPRB – Guia de execução</h2>
+            <div class="grid-2">
+                <div class="card-dica"><h3>📅 Como optar</h3><button class="expand-btn" data-target="optarCprbDetail">Passo a passo</button><div id="optarCprbDetail" class="expand-detail">Em janeiro, GPS código 1079 (4,5% sobre receita líquida de ICMS/ISS). Opção anual.</div></div>
+                <div class="card-dica"><h3>🧮 Reoneração 2026</h3><button class="expand-btn" data-target="reonacaoDetail">Impacto no ponto de equilíbrio</button><div id="reonacaoDetail" class="expand-detail">Se alíquota patronal subir para 8% ou 12%, o equilíbrio muda: 56,25% ou 37,5% de folha/receita. Acompanhe a legislação.</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKLIST FINAL DE IMPLEMENTAÇÃO (NOVO E ESTRUTURADO) -->
+    <div class="checklist-final">
+        <h2>✅ Checklist final de implementação para o gestor</h2>
+        <div class="step"><div class="step-num">🔧</div><div class="step-text"><strong>Revisão de contratos:</strong> Adapte cláusulas para prever a retenção de ISS em obras fora do município sede e inclua responsabilidade do tomador pela comprovação.</div></div>
+        <div class="step"><div class="step-num">📂</div><div class="step-text"><strong>Segregação contábil:</strong> Separe no sistema "insumos de obra" (que geram crédito de PIS/COFINS) de "despesas administrativas" (sem crédito).</div></div>
+        <div class="step"><div class="step-num">📄</div><div class="step-text"><strong>Laudo de periculosidade/insalubridade:</strong> Atualize para evitar pagamento a maior de RAT/FAP (impacta folha).</div></div>
+        <div class="step"><div class="step-num">🏛️</div><div class="step-text"><strong>Tomador público:</strong> Se o cliente for órgão público, as retenções de PIS/COFINS/CSLL podem chegar a 4,8% ou 5,85% – diferencie na precificação.</div></div>
+        <div class="step"><div class="step-num">⚙️</div><div class="step-text"><strong>Depreciação acelerada:</strong> Para máquinas novas adquiridas no ano, solicite ao contador o cálculo da depreciação integral.</div></div>
+        <div class="step"><div class="step-num">🌱</div><div class="step-text"><strong>Incentivos locais:</strong> Consulte a prefeitura sobre IPTU Verde e ISS Tecnológico para reduzir custos municipais.</div></div>
+    </div>
+
+    <!-- ESTUDO DE CASO ATUALIZADO -->
+    <div class="case-study">
+        <h2>📋 Estudo de caso: Construtora Sustentável (2026)</h2>
+        <p><strong>Perfil:</strong> Faturamento anual R$ 15M, 70 funcionários, atua com resíduos, locação de máquinas e um projeto de habitação social. Regime: Lucro Real.</p>
+        <ul>
+            <li><strong>CPRB refinada:</strong> excluiu ICMS da base e monitorou reoneração 2026 (alíquota patronal de 8% → ainda compensou).</li>
+            <li><strong>Créditos sobre resíduos e locação sem operador:</strong> R$ 75 mil/ano.</li>
+            <li><strong>Depreciação acelerada:</strong> R$ 200 mil de economia no primeiro ano.</li>
+            <li><strong>RET com alíquota de 1% (habitação social):</strong> economia de R$ 450 mil/ano.</li>
+            <li><strong>IPTU Verde e ISS Tecnológico:</strong> redução municipal de R$ 30 mil/ano.</li>
+        </ul>
+        <div class="success-box">🎯 Resultado: Carga tributária efetiva caiu de 24% para 10,5% do faturamento, com fluxo de caixa fortalecido e riscos fiscais mitigados.</div>
+    </div>
+
+    <!-- ERROS COMUNS (expandido) -->
+    <div class="errors-section">
+        <h2>⚠️ Erros comuns que aumentam impostos e comprometem o caixa</h2>
+        <div class="grid-2">
+            <div>
+                <strong>1. Não exigir CFOP 5.949/6.949 para materiais</strong> → risco de glosa da Súmula 31.<br>
+                <strong>2. Deixar de monitorar a reoneração da CPRB em 2026</strong> → perder vantagem ou optar erroneamente.<br>
+                <strong>3. Ignorar créditos sobre resíduos e locação</strong> → deixar dinheiro na mesa.
+            </div>
+            <div>
+                <strong>4. Não planejar venda de estoque após RET</strong> → migração para Presumido pode aumentar imposto.<br>
+                <strong>5. Não aproveitar IPTU Verde / ISS Tecnológico</strong> → custos locais mais altos.<br>
+                <strong>6. Falta de laudo de periculosidade (RAT/FAP)</strong> → INSS mais alto sem necessidade.
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Silvanio Gois – Estratégias tributárias aplicadas à construção civil | <a href="https://www.silvaniogois.com.br/" target="_blank">silvaniogois.com.br</a></p>
+    <p style="font-size:0.7rem;">Conteúdo informativo. Consulte seu contador para validação personalizada, especialmente sobre a reoneração gradual da CPRB em 2026 e a alíquota do RET social.</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+
+<script>
+    function atualizarCalculadora() {
+        const receita = parseFloat(document.getElementById('receita').value);
+        const folha = parseFloat(document.getElementById('folha').value);
+        if (isNaN(receita) || isNaN(folha) || receita <= 0 || folha <= 0) {
+            document.getElementById('resultadoCprb').innerHTML = '<p>⚠️ Preencha valores válidos (positivos).</p>';
+            return;
+        }
+        const semDesoneracao = folha * 0.20;
+        const comDesoneracao = receita * 0.045;
+        const economia = semDesoneracao - comDesoneracao;
+        let mensagem = '';
+        if (economia > 0) {
+            mensagem = `<strong>✅ Compensa DESONERAR (CPRB) em 2025</strong> – Economia mensal de R$ ${economia.toFixed(2)}.<br>Sem desoneração: R$ ${semDesoneracao.toFixed(2)}<br>Com CPRB: R$ ${comDesoneracao.toFixed(2)}<br>⚠️ Para 2026, refaça com a alíquota patronal vigente (ex: 8% ou 12%).`;
+        } else if (economia < 0) {
+            mensagem = `<strong>❌ Não compensa desonerar em 2025.</strong> Diferença negativa: R$ ${Math.abs(economia).toFixed(2)}/mês.`;
+        } else {
+            mensagem = `<strong>⚖️ Empate técnico.</strong> Avalie exclusões da base da CPRB e a reoneração 2026.`;
+        }
+        document.getElementById('resultadoCprb').innerHTML = `<div>${mensagem}</div>`;
+    }
+    document.getElementById('receita').addEventListener('input', atualizarCalculadora);
+    document.getElementById('folha').addEventListener('input', atualizarCalculadora);
+    atualizarCalculadora();
+
+    // Sistema de abas
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = {
+        'tab-simples': document.getElementById('tab-simples'),
+        'tab-presumido': document.getElementById('tab-presumido'),
+        'tab-real': document.getElementById('tab-real'),
+        'tab-cprb': document.getElementById('tab-cprb')
+    };
+    function activateTab(tabId) {
+        Object.keys(contents).forEach(id => contents[id].classList.remove('active'));
+        if (contents[tabId]) contents[tabId].classList.add('active');
+        tabs.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-tab') === tabId) btn.classList.add('active');
+        });
+    }
+    tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            if (tabId && contents[tabId]) activateTab(tabId);
+        });
+    });
+
+    // Expansão de detalhes
+    const expandBtns = document.querySelectorAll('.expand-btn');
+    expandBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const targetId = this.getAttribute('data-target');
+            const targetDiv = document.getElementById(targetId);
+            if (targetDiv) {
+                targetDiv.classList.toggle('show');
+                this.textContent = targetDiv.classList.contains('show') ? '🔽 Ocultar detalhes' : '🔍 Explicação detalhada';
+            }
+        });
+    });
+
+    // Botão voltar ao topo
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) backBtn.classList.add('show');
+        else backBtn.classList.remove('show');
+    });
+    backBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
