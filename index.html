@@ -24,29 +24,60 @@
             --success: #2e7d32;
             --warning: #ed6c02;
             --white: #ffffff;
-            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-            --transition: all 0.2s ease-in-out;
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.10);
+            --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.14);
+            --radius: 16px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: var(--gray-bg);
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(180deg, #eef2f8 0%, var(--gray-bg) 55%, #eef2f8 100%);
             color: var(--text-dark);
-            line-height: 1.5;
-            scroll-behavior: smooth;
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
+        /* ============================================
+           HEADER
+           ============================================ */
         .main-header {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-            padding: 1.2rem 5%;
+            background:
+                radial-gradient(circle at 15% 30%, rgba(230, 126, 34, 0.14), transparent 45%),
+                radial-gradient(circle at 85% 70%, rgba(44, 122, 153, 0.18), transparent 50%),
+                linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: 1.1rem 5%;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 6px 24px rgba(10, 47, 68, 0.28);
+            position: relative;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .main-header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.025) 0px,
+                rgba(255, 255, 255, 0.025) 1px,
+                transparent 1px,
+                transparent 12px
+            );
+            pointer-events: none;
         }
 
         .brand {
@@ -54,339 +85,699 @@
             align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .header-image {
-            width: 70px;
-            height: 70px;
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent);
             background: var(--white);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            transition: var(--transition);
+        }
+
+        .header-image:hover {
+            transform: scale(1.04) rotate(-2deg);
         }
 
         .title h1 {
-            font-size: 1.3rem;
-            letter-spacing: -0.3px;
+            font-size: 1.35rem;
+            letter-spacing: -0.4px;
+            font-weight: 700;
+            line-height: 1.2;
         }
+
         .title p {
-            font-size: 0.8rem;
-            opacity: 0.85;
+            font-size: 0.82rem;
+            opacity: 0.88;
+            margin-top: 2px;
+            letter-spacing: 0.2px;
         }
 
         .btn-wa {
-            background: #25D366;
-            padding: 0.6rem 1.3rem;
+            background: linear-gradient(135deg, #25D366, #1da15a);
+            padding: 0.65rem 1.4rem;
             border-radius: 40px;
             text-decoration: none;
-            color: white;
-            font-weight: bold;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             transition: var(--transition);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        .btn-wa:hover {
-            transform: scale(1.02);
-            background: #1da15a;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
         }
 
+        .btn-wa:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+        }
+
+        .btn-wa::before {
+            content: "💬";
+            font-size: 1rem;
+        }
+
+        /* ============================================
+           CONTAINER & SECTIONS
+           ============================================ */
         .container {
-            max-width: 1300px;
-            margin: 1.8rem auto;
+            max-width: 1240px;
+            margin: 2rem auto;
             padding: 0 1.5rem;
         }
 
-        .checklist-section, .calc-box, .tabs-wrapper, .incentives-section, .retencao-section, .oportunidades-section, .case-study, .errors-section, .eficiencia-section, .checklist-final {
-            transition: var(--transition);
-        }
-        .checklist-section:hover, .calc-box:hover, .tabs-wrapper:hover, .incentives-section:hover, .retencao-section:hover, .oportunidades-section:hover, .case-study:hover, .errors-section:hover, .eficiencia-section:hover, .checklist-final:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .checklist-section, .incentives-section, .retencao-section, .oportunidades-section, .eficiencia-section, .checklist-final {
+        .checklist-section,
+        .incentives-section,
+        .retencao-section,
+        .oportunidades-section,
+        .eficiencia-section,
+        .checklist-final,
+        .case-study,
+        .errors-section {
             background: var(--white);
-            border-radius: 1.2rem;
-            padding: 1.5rem;
+            border-radius: var(--radius);
+            padding: 1.8rem;
             margin-bottom: 2rem;
             box-shadow: var(--shadow-sm);
+            border: 1px solid var(--card-border);
             border-left: 6px solid var(--accent);
+            transition: var(--transition);
+            position: relative;
         }
 
-        .step {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-            align-items: flex-start;
-            transition: var(--transition);
-            padding: 0.3rem;
-            border-radius: 12px;
-        }
-        .step:hover {
-            background: #f8fafc;
-            transform: translateX(4px);
-        }
-        .step-num {
-            background: var(--primary);
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .calc-box {
-            background: linear-gradient(145deg, #eef2ff, #e4e9f5);
-            border-radius: 1.2rem;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            box-shadow: var(--shadow-sm);
-        }
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        .input-field {
-            flex: 1;
-            min-width: 160px;
-        }
-        .input-field label {
-            font-weight: 600;
-            display: block;
-            font-size: 0.8rem;
-            margin-bottom: 0.25rem;
-        }
-        .input-field input {
-            width: 100%;
-            padding: 0.6rem;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            transition: var(--transition);
-        }
-        .input-field input:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(230,126,34,0.2);
-        }
-        .result {
-            background: var(--white);
-            padding: 1rem;
-            border-radius: 12px;
-            margin-top: 1rem;
-            border-left: 4px solid var(--accent);
-        }
-
-        .tabs-wrapper {
-            background: var(--white);
-            border-radius: 1.2rem;
-            overflow: hidden;
-            margin: 1.5rem 0;
-            box-shadow: var(--shadow-sm);
-        }
-        .tabs-header {
-            display: flex;
-            flex-wrap: wrap;
-            background: #f1f5f9;
-            border-bottom: 1px solid var(--card-border);
-        }
-        .tab-btn {
-            background: none;
-            border: none;
-            padding: 0.9rem 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--text-muted);
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-        .tab-btn:hover {
-            background: rgba(27,79,110,0.05);
-            color: var(--primary);
-        }
-        .tab-btn.active {
-            background: var(--white);
-            color: var(--primary);
-            border-bottom: 3px solid var(--accent);
-        }
-        .tab-content {
-            display: none;
-            padding: 1.8rem;
-            animation: fade 0.2s ease;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        @keyframes fade {
-            from { opacity: 0; transform: translateY(5px);}
-            to { opacity: 1; transform: translateY(0);}
+        .checklist-section:hover,
+        .incentives-section:hover,
+        .retencao-section:hover,
+        .oportunidades-section:hover,
+        .eficiencia-section:hover,
+        .checklist-final:hover,
+        .case-study:hover,
+        .errors-section:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+            border-left-color: var(--accent);
         }
 
         h2 {
             color: var(--primary-dark);
             border-left: 5px solid var(--accent);
             padding-left: 1rem;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.3rem;
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            line-height: 1.3;
         }
+
         h3 {
             color: var(--primary);
-            margin: 1rem 0 0.5rem;
-            font-size: 1.2rem;
+            margin: 0.8rem 0 0.6rem;
+            font-size: 1.12rem;
+            font-weight: 700;
+            letter-spacing: -0.2px;
         }
+
+        p {
+            color: var(--text-dark);
+        }
+
+        /* ============================================
+           STEPS
+           ============================================ */
+        .step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+            transition: var(--transition);
+            padding: 0.75rem;
+            border-radius: 12px;
+            border: 1px solid transparent;
+        }
+
+        .step:hover {
+            background: linear-gradient(90deg, #f8fafc, #f1f5f9);
+            border-color: var(--card-border);
+            transform: translateX(4px);
+        }
+
+        .step-num {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.92rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(27, 79, 110, 0.25);
+            transition: var(--transition);
+        }
+
+        .step:hover .step-num {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            box-shadow: 0 4px 12px rgba(230, 126, 34, 0.35);
+            transform: scale(1.05);
+        }
+
+        .step-text {
+            padding-top: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           CALCULATOR
+           ============================================ */
+        .calc-box {
+            background: linear-gradient(145deg, #eef2ff 0%, #e4e9f5 100%);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #d6ddf0;
+            transition: var(--transition);
+        }
+
+        .calc-box:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .calc-box h3 {
+            margin-top: 0;
+            font-size: 1.15rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .input-field {
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .input-field label {
+            font-weight: 600;
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 0.35rem;
+            color: var(--primary-dark);
+            letter-spacing: 0.2px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 0.65rem 0.8rem;
+            border-radius: 10px;
+            border: 1.5px solid #ccd4e6;
+            background: var(--white);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
+
+        .input-field input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+        }
+
+        .result {
+            background: var(--white);
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           TABS
+           ============================================ */
+        .tabs-wrapper {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin: 1.8rem 0;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .tabs-wrapper:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .tabs-header {
+            display: flex;
+            flex-wrap: wrap;
+            background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition);
+            font-size: 0.88rem;
+            font-family: inherit;
+            position: relative;
+            letter-spacing: 0.2px;
+        }
+
+        .tab-btn::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.25s ease;
+            transform-origin: center;
+        }
+
+        .tab-btn:hover {
+            background: rgba(27, 79, 110, 0.05);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            background: var(--white);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .tab-btn.active::after {
+            transform: scaleX(1);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 1.8rem;
+            animation: fade 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================
+           GRID & CARDS
+           ============================================ */
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.2rem;
             margin: 1rem 0;
         }
+
         .card-dica {
-            background: #fefaf5;
+            background: linear-gradient(160deg, #fefaf5 0%, #fff7ec 100%);
             border: 1px solid #ffe0b5;
-            border-radius: 1rem;
+            border-radius: 14px;
             padding: 1.2rem;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
+
+        .card-dica::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
         .card-dica:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-md);
             border-color: var(--accent);
         }
+
+        .card-dica:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-dica h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ============================================
+           EXPAND BUTTONS
+           ============================================ */
         .expand-btn {
             background: transparent;
-            border: 1px solid var(--accent);
+            border: 1.5px solid var(--accent);
             color: var(--accent);
-            padding: 0.4rem 1rem;
+            padding: 0.45rem 1rem;
             border-radius: 30px;
             cursor: pointer;
             font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 0.8rem;
+            font-weight: 700;
+            margin-top: 0.7rem;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.35rem;
+            font-family: inherit;
+            letter-spacing: 0.2px;
         }
+
         .expand-btn:hover {
             background: var(--accent);
-            color: white;
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+            transform: translateY(-1px);
         }
+
         .expand-detail {
             display: none;
             margin-top: 1rem;
-            padding: 1rem;
-            background: #f9fafb;
-            border-radius: 12px;
+            padding: 1rem 1.1rem;
+            background: var(--white);
+            border-radius: 10px;
             border-left: 3px solid var(--primary);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.88rem;
+            line-height: 1.65;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
         }
+
         .expand-detail.show {
             display: block;
-            animation: fade 0.2s ease;
+            animation: fade 0.25s ease;
         }
+
+        /* ============================================
+           BOXES
+           ============================================ */
         .formula {
             background: #eef2ff;
-            padding: 0.5rem;
+            padding: 0.6rem 0.8rem;
             border-radius: 8px;
-            font-family: monospace;
+            font-family: 'Consolas', 'Monaco', monospace;
             margin: 0.5rem 0;
+            font-size: 0.85rem;
         }
+
         .alert-box {
-            background: #fff2e8;
+            background: linear-gradient(135deg, #fff2e8, #ffe8d6);
             border-left: 4px solid var(--warning);
-            padding: 0.8rem 1rem;
-            margin: 1rem 0;
+            padding: 0.9rem 1.1rem;
+            margin: 1.2rem 0;
             border-radius: 10px;
+            font-size: 0.92rem;
+            color: #7a3d00;
         }
+
         .success-box {
-            background: #e0f2e9;
+            background: linear-gradient(135deg, #e0f2e9, #d3ecdf);
             border-left: 4px solid var(--success);
-            padding: 0.8rem 1rem;
+            padding: 0.9rem 1.1rem;
             border-radius: 10px;
+            margin-top: 1rem;
+            color: #1b4d2a;
+            font-size: 0.92rem;
+            font-weight: 500;
         }
+
+        /* ============================================
+           TABLE
+           ============================================ */
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.85rem;
-            margin: 1rem 0;
+            margin: 1.2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
         }
+
         th, td {
-            border: 1px solid #ddd;
-            padding: 0.6rem;
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem 0.9rem;
             text-align: left;
             vertical-align: top;
         }
+
         th {
-            background: var(--primary);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.3px;
         }
-        .case-study, .errors-section {
-            background: var(--white);
-            border-radius: 1.2rem;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            box-shadow: var(--shadow-sm);
+
+        tbody tr {
             transition: var(--transition);
         }
 
+        tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tbody tr:hover {
+            background: #eef2ff;
+        }
+
+        /* ============================================
+           CASE STUDY & ERRORS
+           ============================================ */
+        .case-study ul {
+            padding-left: 1.2rem;
+            margin: 0.8rem 0;
+        }
+
+        .case-study li {
+            margin-bottom: 0.5rem;
+            font-size: 0.93rem;
+        }
+
+        .errors-section strong {
+            color: var(--primary-dark);
+        }
+
+        .errors-section .grid-2 > div {
+            padding: 0.8rem;
+            background: #fef2f2;
+            border-radius: 10px;
+            border-left: 3px solid #dc2626;
+            font-size: 0.88rem;
+            line-height: 1.9;
+        }
+
+        /* ============================================
+           BACK TO TOP
+           ============================================ */
         .back-to-top {
             position: fixed;
             bottom: 2rem;
             right: 1.5rem;
-            background: var(--primary);
-            color: white;
-            width: 44px;
-            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(27, 79, 110, 0.35);
             z-index: 1000;
             border: none;
             cursor: pointer;
         }
+
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
         }
+
         .back-to-top:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(230, 126, 34, 0.4);
         }
 
+        /* ============================================
+           FOOTER
+           ============================================ */
         footer {
-            background: var(--primary-dark);
-            color: #ccc;
+            background: linear-gradient(135deg, var(--primary-dark), #061c2b);
+            color: #cbd5e1;
             text-align: center;
-            padding: 1.8rem;
-            margin-top: 2rem;
-            font-size: 0.8rem;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            border-top: 3px solid var(--accent);
         }
+
         footer a {
             color: var(--accent-light);
             text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
         }
 
-        @media (max-width: 700px) {
-            .tabs-header { flex-direction: column; }
-            .tab-btn { text-align: left; }
-            .step { flex-direction: column; }
-            .back-to-top { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
+        footer a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        footer p + p {
+            margin-top: 0.5rem;
+            font-size: 0.72rem;
+            opacity: 0.75;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 1rem 4%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .brand {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .title h1 {
+                font-size: 1.15rem;
+            }
+
+            .title p {
+                font-size: 0.75rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+                margin: 1.5rem auto;
+            }
+
+            .checklist-section,
+            .incentives-section,
+            .retencao-section,
+            .oportunidades-section,
+            .eficiencia-section,
+            .checklist-final,
+            .case-study,
+            .errors-section,
+            .calc-box {
+                padding: 1.3rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .tabs-header {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                text-align: left;
+                padding: 0.85rem 1.2rem;
+                border-bottom: 1px solid var(--card-border);
+            }
+
+            .tab-btn::after {
+                display: none;
+            }
+
+            .tab-btn.active {
+                border-left: 4px solid var(--accent);
+            }
+
+            .step {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .step-num {
+                width: 30px;
+                height: 30px;
+                min-width: 30px;
+                font-size: 0.85rem;
+            }
+
+            table {
+                font-size: 0.78rem;
+            }
+
+            th, td {
+                padding: 0.55rem 0.6rem;
+            }
+
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-image {
+                width: 56px;
+                height: 56px;
+            }
+
+            .btn-wa {
+                padding: 0.55rem 1.1rem;
+                font-size: 0.82rem;
+            }
+
+            .input-field {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
@@ -414,29 +805,29 @@
         <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Separe materiais na nota</strong> – Use Súmula 31 STF, mas exija notas fiscais de remessa (CFOP 5.949/6.949) para comprovar o fornecimento.</div></div>
         <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Incorporadoras: SPE + RET</strong> – 4% sobre receita (1% para habitação social). Planeje a venda de unidades após a baixa da afetação.</div></div>
         <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Créditos e retenções</strong> – Lucro Real: crédito sobre resíduos, locação sem operador (não ISS), depreciação acelerada. Simples: controle retenção de 11%.</div></div>
-        <div class="step"><div class="step-num"></div><div class="step-text"><strong>Checklist extra de compliance:</strong> Possuo laudo de periculosidade/insalubridade atualizado? O tomador é órgão público (retenções diferentes)? Utilizamos crédito de depreciação acelerada em máquinas novas?</div></div>
+        <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Checklist extra de compliance:</strong> Possuo laudo de periculosidade/insalubridade atualizado? O tomador é órgão público (retenções diferentes)? Utilizamos crédito de depreciação acelerada em máquinas novas?</div></div>
     </div>
 
-    <!-- CALCULADORA CPRB + REFINAMENTO COM ALERTA DINÂMICO -->
+    <!-- CALCULADORA CPRB -->
     <div class="calc-box">
-        <h3 style="margin-top:0;">Calculadora: Desonerar ou não a folha? (CPRB)</h3>
+        <h3>Calculadora: Desonerar ou não a folha? (CPRB)</h3>
         <div class="input-group">
             <div class="input-field"><label>Faturamento mensal médio (R$)</label><input type="number" id="receita" placeholder="Ex: 350000" value="350000"></div>
             <div class="input-field"><label>Folha bruta mensal (R$)</label><input type="number" id="folha" placeholder="Ex: 80000" value="80000"></div>
         </div>
         <div class="result" id="resultadoCprb"></div>
-        <p style="font-size:0.7rem; margin-top:0.5rem;">*Compara alíquota patronal vigente (2025: 20%) vs 4,5% sobre faturamento líquido. Para 2026, a alíquota sobre folha poderá ser 8% ou 12% (transição).</p>
+        <p style="font-size:0.72rem; margin-top:0.7rem; color: var(--text-muted);">*Compara alíquota patronal vigente (2025: 20%) vs 4,5% sobre faturamento líquido. Para 2026, a alíquota sobre folha poderá ser 8% ou 12% (transição).</p>
         <button class="expand-btn" data-target="calcCprbDetail">Refinamentos e reoneração 2026</button>
         <div id="calcCprbDetail" class="expand-detail">
-            <strong>Base de cálculo da CPRB:</strong> A receita bruta pode ser reduzida de vendas canceladas, descontos incondicionais, ICMS e ISS destacados.<br>
-            <strong>Reoneração gradual (2026):</strong> O STF determinou o fim da desoneração total. Para 2026, a alíquota patronal sobre a folha pode ser 8% ou 12% (transição). Assim, o ponto de equilíbrio deixa de ser 22,5%: <br>
+            <strong>Base de cálculo da CPRB:</strong> A receita bruta pode ser reduzida de vendas canceladas, descontos incondicionais, ICMS e ISS destacados.<br><br>
+            <strong>Reoneração gradual (2026):</strong> O STF determinou o fim da desoneração total. Para 2026, a alíquota patronal sobre a folha pode ser 8% ou 12% (transição). Assim, o ponto de equilíbrio deixa de ser 22,5%:<br>
             • Se alíquota sobre folha for 8% → equilíbrio quando Folha/Receita = 4,5%/8% = 56,25%.<br>
-            • Se alíquota for 12% → equilíbrio = 4,5%/12% = 37,5%.<br>
+            • Se alíquota for 12% → equilíbrio = 4,5%/12% = 37,5%.<br><br>
             <strong>Dinâmica na calculadora:</strong> O resultado acima considera a alíquota cheia de 20% (2025). Para 2026, refaça o cálculo manualmente com a alíquota patronal que for publicada.
         </div>
     </div>
 
-    <!-- TABELA COMPARATIVA DE EFICIÊNCIA POR REGIME (NOVO) -->
+    <!-- TABELA COMPARATIVA DE EFICIÊNCIA POR REGIME -->
     <div class="eficiencia-section">
         <h2>Matriz de eficiência tributária por regime</h2>
         <p>Comparação direta dos principais fatores de custo e oportunidade em cada regime.</p>
@@ -456,7 +847,7 @@
         <div class="alert-box">Para empresas no Lucro Real, a combinação de CPRB + créditos sobre insumos + depreciação acelerada geralmente supera os outros regimes, desde que haja volume de custos tributáveis.</div>
     </div>
 
-    <!-- SEÇÃO INSUMOS E CRÉDITOS (mantida) -->
+    <!-- SEÇÃO INSUMOS E CRÉDITOS -->
     <div class="incentives-section">
         <h2>Planejamento de insumos e créditos (Lucro Real)</h2>
         <div class="grid-2">
@@ -466,7 +857,7 @@
         </div>
     </div>
 
-    <!-- RET: HABITAÇÃO SOCIAL + VENDA DE ESTOQUE -->
+    <!-- RET -->
     <div class="retencao-section">
         <h2>RET – Detalhamento para incorporadoras</h2>
         <div class="grid-2">
@@ -475,7 +866,7 @@
         </div>
     </div>
 
-    <!-- COMPLIANCE SÚMULA 31 (CFOP) -->
+    <!-- SÚMULA 31 -->
     <div class="oportunidades-section">
         <h2>Súmula 31 STF – Como não ter a dedução glosada</h2>
         <div class="grid-2">
@@ -486,14 +877,14 @@
 
     <!-- IPTU VERDE + ISS TECNOLÓGICO -->
     <div class="oportunidades-section">
-        <h2>Fiscalidade verde e incentivos locais</h2>
+        <h2>🌱 Fiscalidade verde e incentivos locais</h2>
         <div class="grid-2">
             <div class="card-dica"><h3>IPTU Verde</h3><button class="expand-btn" data-target="iptuVerdeDetail">Desconto para sustentabilidade</button><div id="iptuVerdeDetail" class="expand-detail">Prefeituras concedem desconto de até 10% no IPTU para projetos com reuso de água, energia solar, telhado verde. Reduz custo de carregamento de terrenos e imóveis não vendidos.</div></div>
             <div class="card-dica"><h3>ISS Tecnológico / Inovação</h3><button class="expand-btn" data-target="issTecDetail">Alíquota reduzida</button><div id="issTecDetail" class="expand-detail">Algumas cidades reduzem ISS de 5% para 2% ou 3% para empresas que investem em inovação ou estão em polos tecnológicos. Verifique programas municipais.</div></div>
         </div>
     </div>
 
-    <!-- ABAS TÉCNICAS (resumo prático) -->
+    <!-- ABAS TÉCNICAS -->
     <div class="tabs-wrapper">
         <div class="tabs-header">
             <button class="tab-btn active" data-tab="tab-simples">Simples Nacional</button>
@@ -534,18 +925,18 @@
         </div>
     </div>
 
-    <!-- CHECKLIST FINAL DE IMPLEMENTAÇÃO (NOVO E ESTRUTURADO) -->
+    <!-- CHECKLIST FINAL -->
     <div class="checklist-final">
         <h2>Checklist final de implementação para o gestor</h2>
-        <div class="step"><div class="step-num"></div><div class="step-text"><strong>Revisão de contratos:</strong> Adapte cláusulas para prever a retenção de ISS em obras fora do município sede e inclua responsabilidade do tomador pela comprovação.</div></div>
-        <div class="step"><div class="step-num"></div><div class="step-text"><strong>Segregação contábil:</strong> Separe no sistema "insumos de obra" (que geram crédito de PIS/COFINS) de "despesas administrativas" (sem crédito).</div></div>
-        <div class="step"><div class="step-num"></div><div class="step-text"><strong>Laudo de periculosidade/insalubridade:</strong> Atualize para evitar pagamento a maior de RAT/FAP (impacta folha).</div></div>
-        <div class="step"><div class="step-num"></div><div class="step-text"><strong>Tomador público:</strong> Se o cliente for órgão público, as retenções de PIS/COFINS/CSLL podem chegar a 4,8% ou 5,85% – diferencie na precificação.</div></div>
-        <div class="step"><div class="step-num"></div><div class="step-text"><strong>Depreciação acelerada:</strong> Para máquinas novas adquiridas no ano, solicite ao contador o cálculo da depreciação integral.</div></div>
-        <div class="step"><div class="step-num"></div><div class="step-text"><strong>Incentivos locais:</strong> Consulte a prefeitura sobre IPTU Verde e ISS Tecnológico para reduzir custos municipais.</div></div>
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Revisão de contratos:</strong> Adapte cláusulas para prever a retenção de ISS em obras fora do município sede e inclua responsabilidade do tomador pela comprovação.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Segregação contábil:</strong> Separe no sistema "insumos de obra" (que geram crédito de PIS/COFINS) de "despesas administrativas" (sem crédito).</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Laudo de periculosidade/insalubridade:</strong> Atualize para evitar pagamento a maior de RAT/FAP (impacta folha).</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Tomador público:</strong> Se o cliente for órgão público, as retenções de PIS/COFINS/CSLL podem chegar a 4,8% ou 5,85% – diferencie na precificação.</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Depreciação acelerada:</strong> Para máquinas novas adquiridas no ano, solicite ao contador o cálculo da depreciação integral.</div></div>
+        <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Incentivos locais:</strong> Consulte a prefeitura sobre IPTU Verde e ISS Tecnológico para reduzir custos municipais.</div></div>
     </div>
 
-    <!-- ESTUDO DE CASO ATUALIZADO -->
+    <!-- ESTUDO DE CASO -->
     <div class="case-study">
         <h2>Estudo de caso: Construtora Sustentável (2026)</h2>
         <p><strong>Perfil:</strong> Faturamento anual R$ 15M, 70 funcionários, atua com resíduos, locação de máquinas e um projeto de habitação social. Regime: Lucro Real.</p>
@@ -559,18 +950,18 @@
         <div class="success-box">Resultado: Carga tributária efetiva caiu de 24% para 10,5% do faturamento, com fluxo de caixa fortalecido e riscos fiscais mitigados.</div>
     </div>
 
-    <!-- ERROS COMUNS (expandido) -->
+    <!-- ERROS COMUNS -->
     <div class="errors-section">
         <h2>Erros comuns que aumentam impostos e comprometem o caixa</h2>
         <div class="grid-2">
             <div>
-                <strong>1. Não exigir CFOP 5.949/6.949 para materiais</strong> → risco de glosa da Súmula 31.<br>
-                <strong>2. Deixar de monitorar a reoneração da CPRB em 2026</strong> → perder vantagem ou optar erroneamente.<br>
+                <strong>1. Não exigir CFOP 5.949/6.949 para materiais</strong> → risco de glosa da Súmula 31.<br><br>
+                <strong>2. Deixar de monitorar a reoneração da CPRB em 2026</strong> → perder vantagem ou optar erroneamente.<br><br>
                 <strong>3. Ignorar créditos sobre resíduos e locação</strong> → deixar dinheiro na mesa.
             </div>
             <div>
-                <strong>4. Não planejar venda de estoque após RET</strong> → migração para Presumido pode aumentar imposto.<br>
-                <strong>5. Não aproveitar IPTU Verde / ISS Tecnológico</strong> → custos locais mais altos.<br>
+                <strong>4. Não planejar venda de estoque após RET</strong> → migração para Presumido pode aumentar imposto.<br><br>
+                <strong>5. Não aproveitar IPTU Verde / ISS Tecnológico</strong> → custos locais mais altos.<br><br>
                 <strong>6. Falta de laudo de periculosidade (RAT/FAP)</strong> → INSS mais alto sem necessidade.
             </div>
         </div>
@@ -579,7 +970,7 @@
 
 <footer>
     <p>© 2026 Silvanio Gois – Estratégias tributárias aplicadas à construção civil | <a href="https://www.silvaniogois.com.br/" target="_blank">silvaniogois.com.br</a></p>
-    <p style="font-size:0.7rem;">Conteúdo informativo. Consulte seu contador para validação personalizada, especialmente sobre a reoneração gradual da CPRB em 2026 e a alíquota do RET social.</p>
+    <p>Conteúdo informativo. Consulte seu contador para validação personalizada, especialmente sobre a reoneração gradual da CPRB em 2026 e a alíquota do RET social.</p>
 </footer>
 
 <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
