@@ -47,21 +47,18 @@
         }
 
         /* ============================================
-           HEADER
+           HEADER — FUNDO ESCURO SÓLIDO / TEXTO CLARO
            ============================================ */
         .main-header {
-            background:
-                radial-gradient(circle at 15% 30%, rgba(230, 126, 34, 0.14), transparent 45%),
-                radial-gradient(circle at 85% 70%, rgba(44, 122, 153, 0.18), transparent 50%),
-                linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, #061c2b 0%, #0a2f44 60%, #0d3a55 100%);
+            color: #f1f5f9;
             padding: 1.1rem 5%;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
-            box-shadow: 0 6px 24px rgba(10, 47, 68, 0.28);
+            box-shadow: 0 6px 24px rgba(6, 28, 43, 0.45);
             position: relative;
             border-bottom: 4px solid var(--accent);
         }
@@ -72,8 +69,8 @@
             inset: 0;
             background-image: repeating-linear-gradient(
                 45deg,
-                rgba(255, 255, 255, 0.025) 0px,
-                rgba(255, 255, 255, 0.025) 1px,
+                rgba(255, 255, 255, 0.02) 0px,
+                rgba(255, 255, 255, 0.02) 1px,
                 transparent 1px,
                 transparent 12px
             );
@@ -96,7 +93,7 @@
             object-fit: cover;
             border: 3px solid var(--accent);
             background: var(--white);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
             transition: var(--transition);
         }
 
@@ -109,21 +106,23 @@
             letter-spacing: -0.4px;
             font-weight: 700;
             line-height: 1.2;
+            color: #ffffff;
         }
 
         .title p {
             font-size: 0.82rem;
-            opacity: 0.88;
+            opacity: 0.9;
             margin-top: 2px;
             letter-spacing: 0.2px;
+            color: #e2e8f0;
         }
 
         .btn-wa {
             background: linear-gradient(135deg, #25D366, #1da15a);
-            padding: 0.65rem 1.4rem;
+            padding: 0.65rem 1.5rem;
             border-radius: 40px;
             text-decoration: none;
-            color: var(--white);
+            color: #ffffff;
             font-weight: 700;
             font-size: 0.9rem;
             display: inline-flex;
@@ -138,12 +137,7 @@
 
         .btn-wa:hover {
             transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
-        }
-
-        .btn-wa::before {
-            content: "💬";
-            font-size: 1rem;
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.5);
         }
 
         /* ============================================
@@ -621,7 +615,6 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.4rem;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s;
@@ -629,6 +622,7 @@
             z-index: 1000;
             border: none;
             cursor: pointer;
+            padding: 0;
         }
 
         .back-to-top.show {
@@ -642,36 +636,51 @@
             box-shadow: 0 10px 24px rgba(230, 126, 34, 0.4);
         }
 
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
         /* ============================================
-           FOOTER
+           FOOTER — FUNDO AZUL-ESCURO / TEXTO CLARO
            ============================================ */
         footer {
-            background: linear-gradient(135deg, var(--primary-dark), #061c2b);
-            color: #cbd5e1;
+            background: linear-gradient(135deg, #061c2b 0%, #0a2f44 100%);
+            color: #e2e8f0;
             text-align: center;
-            padding: 2rem 1.5rem;
+            padding: 2.2rem 1.5rem;
             margin-top: 3rem;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             line-height: 1.8;
             border-top: 3px solid var(--accent);
+            box-shadow: 0 -4px 20px rgba(6, 28, 43, 0.2);
+        }
+
+        footer p {
+            color: #e2e8f0;
         }
 
         footer a {
             color: var(--accent-light);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
         }
 
         footer a:hover {
-            color: var(--white);
+            color: #ffffff;
             text-decoration: underline;
         }
 
         footer p + p {
-            margin-top: 0.5rem;
-            font-size: 0.72rem;
-            opacity: 0.75;
+            margin-top: 0.6rem;
+            font-size: 0.75rem;
+            color: #94a3b8;
         }
 
         /* ============================================
@@ -851,7 +860,7 @@
     <div class="incentives-section">
         <h2>Planejamento de insumos e créditos (Lucro Real)</h2>
         <div class="grid-2">
-            <div class="card-dica"><h3>♻️ Resíduos da construção</h3><button class="expand-btn" data-target="residuoDetail">Crédito sobre insumo essencial</button><div id="residuoDetail" class="expand-detail">STJ entende que custo com remoção de resíduos é insumo → crédito de 9,25% (PIS+COFINS). Guarde notas fiscais de transporte e destinação.</div></div>
+            <div class="card-dica"><h3>Resíduos da construção</h3><button class="expand-btn" data-target="residuoDetail">Crédito sobre insumo essencial</button><div id="residuoDetail" class="expand-detail">STJ entende que custo com remoção de resíduos é insumo → crédito de 9,25% (PIS+COFINS). Guarde notas fiscais de transporte e destinação.</div></div>
             <div class="card-dica"><h3>Locação sem operador</h3><button class="expand-btn" data-target="locacaoDetail">Redução de ISS</button><div id="locacaoDetail" class="expand-detail">Locação de bens móveis sem operador não é serviço → não incide ISS (Súmula 68 STJ). Economia típica de 2% a 5% sobre o valor da locação.</div></div>
             <div class="card-dica"><h3>Depreciação acelerada</h3><button class="expand-btn" data-target="depreciacaoDetail">Como aplicar</button><div id="depreciacaoDetail" class="expand-detail">Lei 11.774/2008 permite depreciação integral de máquinas novas no primeiro ano. Ex: Máquina R$500k → redução de lucro real → economia de até R$170k no primeiro ano.</div></div>
         </div>
@@ -877,7 +886,7 @@
 
     <!-- IPTU VERDE + ISS TECNOLÓGICO -->
     <div class="oportunidades-section">
-        <h2>🌱 Fiscalidade verde e incentivos locais</h2>
+        <h2>Fiscalidade verde e incentivos locais</h2>
         <div class="grid-2">
             <div class="card-dica"><h3>IPTU Verde</h3><button class="expand-btn" data-target="iptuVerdeDetail">Desconto para sustentabilidade</button><div id="iptuVerdeDetail" class="expand-detail">Prefeituras concedem desconto de até 10% no IPTU para projetos com reuso de água, energia solar, telhado verde. Reduz custo de carregamento de terrenos e imóveis não vendidos.</div></div>
             <div class="card-dica"><h3>ISS Tecnológico / Inovação</h3><button class="expand-btn" data-target="issTecDetail">Alíquota reduzida</button><div id="issTecDetail" class="expand-detail">Algumas cidades reduzem ISS de 5% para 2% ou 3% para empresas que investem em inovação ou estão em polos tecnológicos. Verifique programas municipais.</div></div>
@@ -973,7 +982,11 @@
     <p>Conteúdo informativo. Consulte seu contador para validação personalizada, especialmente sobre a reoneração gradual da CPRB em 2026 e a alíquota do RET social.</p>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
 
 <script>
     function atualizarCalculadora() {
@@ -988,7 +1001,7 @@
         const economia = semDesoneracao - comDesoneracao;
         let mensagem = '';
         if (economia > 0) {
-            mensagem = `<strong>Compensa DESONERAR (CPRB) em 2025</strong> – Economia mensal de R$ ${economia.toFixed(2)}.<br>Sem desoneração: R$ ${semDesoneracao.toFixed(2)}<br>Com CPRB: R$ ${comDesoneracao.toFixed(2)}<br>⚠️ Para 2026, refaça com a alíquota patronal vigente (ex: 8% ou 12%).`;
+            mensagem = `<strong>Compensa DESONERAR (CPRB) em 2025</strong> – Economia mensal de R$ ${economia.toFixed(2)}.<br>Sem desoneração: R$ ${semDesoneracao.toFixed(2)}<br>Com CPRB: R$ ${comDesoneracao.toFixed(2)}<br>Para 2026, refaça com a alíquota patronal vigente (ex: 8% ou 12%).`;
         } else if (economia < 0) {
             mensagem = `<strong>Não compensa desonerar em 2025.</strong> Diferença negativa: R$ ${Math.abs(economia).toFixed(2)}/mês.`;
         } else {
@@ -1032,7 +1045,7 @@
             const targetDiv = document.getElementById(targetId);
             if (targetDiv) {
                 targetDiv.classList.toggle('show');
-                this.textContent = targetDiv.classList.contains('show') ? '🔽 Ocultar detalhes' : '🔍 Explicação detalhada';
+                this.textContent = targetDiv.classList.contains('show') ? 'Ocultar detalhes' : 'Explicação detalhada';
             }
         });
     });
